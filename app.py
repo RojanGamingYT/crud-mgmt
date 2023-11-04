@@ -18,12 +18,10 @@ class User(db.Model):
 
 db.create_all()
 
-#create a test route
 @app.route('/test', methods=['GET'])
 def test():
   return make_response(jsonify({'message': 'test route'}), 200)
 
-# create a user
 @app.route('/users', methods=['POST'])
 def create_user():
   try:
@@ -35,7 +33,6 @@ def create_user():
   except Exception:
     return make_response(jsonify({'message': 'error creating user'}), 500)
 
-# get all users
 @app.route('/users', methods=['GET'])
 def get_users():
   try:
@@ -44,7 +41,6 @@ def get_users():
   except Exception:
     return make_response(jsonify({'message': 'error getting users'}), 500)
 
-# get a user by id
 @app.route('/users/<int:id>', methods=['GET'])
 def get_user(id):
   try:
@@ -55,7 +51,6 @@ def get_user(id):
   except Exception:
     return make_response(jsonify({'message': 'error getting user'}), 500)
 
-# update a user
 @app.route('/users/<int:id>', methods=['PUT'])
 def update_user(id):
   try:
@@ -70,7 +65,6 @@ def update_user(id):
   except Exception:
     return make_response(jsonify({'message': 'error updating user'}), 500)
 
-# delete a user
 @app.route('/users/<int:id>', methods=['DELETE'])
 def delete_user(id):
   try:
